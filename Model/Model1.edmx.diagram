@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="82e982824a4048d59e562977cfa359b8" Name="Diagram1">
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Celi" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.CherniySpisok" Width="1.5" PointX="5.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Dolzhnosti" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.GrupZajavki" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Organizacii" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Pasport" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Podrazdelenia" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Polzovateli" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Posetiteli" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Sotrudniki" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Statusi" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_DBModel.Zajavki" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Zajavki_Celi" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Sotrudniki_Dolzhnosti" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_GrupZajavki_Posetiteli" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_GrupZajavki_Zajavki1" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Polzovateli_Organizacii" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Sotrudniki_Podrazdelenia" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Zajavki_Podrazdelenia" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Zajavki_Polzovateli" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_DBModel.FK_Zajavki_Statusi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

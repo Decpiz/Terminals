@@ -1,0 +1,139 @@
+﻿<Window x:Class="Terminals.Windows.wndPostGlobal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Terminals.Windows"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Сотрудник общего отдела" MinHeight="720" MinWidth="1280">
+    <Border BorderThickness="6" BorderBrush="#FFC9E6FF">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="0,0,6,0" BorderBrush="#FFC9E6FF"  Grid.Column="1" Grid.RowSpan="3"/>
+            <Border BorderThickness="0,0,6,0" BorderBrush="#FFC9E6FF" Grid.RowSpan="3"/>
+            <Border BorderThickness="0,6,0,6" BorderBrush="#FFC9E6FF" Grid.Column="1" Grid.Row="1"/>
+
+            <StackPanel Background="AliceBlue" Grid.Column="1" Margin="0,0,6,0"/>
+            <StackPanel Background="AliceBlue" Grid.Column="1" Grid.Row="2" Margin="0,0,6,0"/>
+
+            <TextBlock Text="Подразделения" Margin="5" FontSize="20" FontWeight="DemiBold"
+                       VerticalAlignment="Bottom"/>
+
+            <DataGrid x:Name="dtgPeoplesList" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" 
+                      Grid.Column="2" Grid.RowSpan="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID_Posetitelia" Binding="{Binding Path=Nomer_zajavki}"/>
+                    <DataGridTextColumn Header="Familia_posetitelia" Binding="{Binding Path=Familia}"/>
+                    <DataGridTextColumn Header="Imya_posetitelia" Binding="{Binding Path=Imya}"/>
+                    <DataGridTextColumn Header="Otchestvo_posetitelia" Binding="{Binding Path=Otchestvo}"/>
+                    <DataGridTextColumn Header="Data_rozhdenia" Binding="{Binding Path=Data_rozhdenia}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnExportToExcel" Content="Скачать файл" Grid.Column="2" Grid.Row="2" Margin="150 10" 
+                    Click="btnExportToExcel_Click" Visibility="Collapsed"/>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="tbSearchAppli" Grid.Row="1" Margin="4" 
+                         Height="26" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Padding="3"
+                         Text="Поиск..." DragEnter="tbSearchAppli_DragEnter" GotFocus="tbSearchAppli_GotFocus" 
+                         LostFocus="tbSearchAppli_LostFocus" TextChanged="tbSearchAppli_TextChanged" MaxLength="70"/>
+
+                <Button Style="{DynamicResource ButtonStyleAccept}" x:Name="btnAcceptAppli" Grid.Column="2" Margin="4,4,10,4"
+                        Height="30" VerticalAlignment="Bottom" Click="btnAcceptAppli_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="Принять заявку" FontSize="14" FontWeight="Medium"/>
+                </Button>
+                <Button Style="{DynamicResource ButtonStyleDiscard}" x:Name="btnDiscardAppli" Grid.Column="1" Margin="4"
+                        Height="30" VerticalAlignment="Bottom" Click="btnDiscardAppli_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <TextBlock Text="Отклонить заявку" FontSize="14" FontWeight="Medium"/>
+                </Button>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                
+
+                <TextBlock x:Name="tbAppliTitle" Text="Все заявки" Margin="20 10 0 0" VerticalAlignment="Bottom" FontSize="20" FontWeight="DemiBold"/>
+
+                <DataGrid Style="{DynamicResource DataGridStyle1}" 
+                      CellStyle="{DynamicResource DataGridCellStyle1}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      RowStyle="{DynamicResource DataGridRowStyle1}"
+                      x:Name="dtgApplications" AutoGenerateColumns="False" Margin="8,2,14,6"
+                      MouseDown="dtgApplications_MouseDown" IsReadOnly="True" Grid.Row="1">
+                
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="№ Заявки:" Binding="{Binding Path=Nomer_zajavki}" FontWeight="Medium"/>
+                        <DataGridTextColumn Header="Пользователь:" Binding="{Binding Path=FI}"/>
+                        <DataGridTextColumn Header="Логин:" Binding="{Binding Path=Date, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                        <DataGridTextColumn Header="Количество гостей:" Binding="{Binding Path=CountVisitors,StringFormat=Гостей: {0}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <ListView Style="{DynamicResource ListViewStyle1}" Name="lvDivisions" Grid.Column="0" Grid.Row="1" Margin="0,0,6,0" 
+                      d:ItemsSource="{d:SampleData ItemCount=1}" MouseDown="lvVidi_MouseDown" SelectionChanged="lvDivisions_SelectionChanged" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" Margin="5,5,6,5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                    <TextBlock Text="Город: " FontSize="14"/>
+                                    <TextBlock Text="Улица: " FontSize="14"/>
+                                    <TextBlock Text="Строение: " FontSize="14"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="tb" Text="{Binding Nazvanie_goroda}" FontSize="14" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Nazvanie_ylici}" FontSize="14"/>
+                                    <TextBlock Text="{Binding Nomer_stroenia}" FontSize="14"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="btnFilDtgApplicationsFullContent" Grid.Row="2" Margin="7,7,13,7" Click="btnFilDtgApplicationsFullContent_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+                <TextBlock Text="Все заявки" FontSize="14" FontWeight="Medium"/>
+            </Button>
+        </Grid>
+    </Border>
+</Window>

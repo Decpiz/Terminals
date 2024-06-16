@@ -1,0 +1,54 @@
+﻿<Window x:Class="Terminals.Windows.WindowCheckOrganization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Terminals.Windows"
+        mc:Ignorable="d"
+        Title="WindowCheckOrganization" Height="300" Width="200" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer>
+            <StackPanel Margin="5" x:Name="spOrganization">
+                <TextBlock Text="Организация:" FontSize="16" FontWeight="Medium"/>
+                <TextBlock Text="Наименовавние:" FontSize="14" FontWeight="Medium" Margin="0 4 0 0"/>
+                <TextBlock Text="{Binding Path=Nazvanie}" FontSize="14" FontWeight="Medium" />
+                <TextBlock Text="ИНН:" FontSize="14" FontWeight="Medium" Margin="0 4 0 0"/>
+                <TextBlock Text="{Binding Path=INN}" FontSize="14" FontWeight="Medium" />
+                <TextBlock Text="ОГРН:" FontSize="14" FontWeight="Medium" Margin="0 4 0 0"/>
+                <TextBlock Text="{Binding Path=OGRN}" FontSize="14" FontWeight="Medium" />
+                <TextBlock Text="Генеральный директор:" FontSize="14" FontWeight="Medium" Margin="0 4 0 0"/>
+                <TextBlock Text="{Binding Path=GenDir_FIO}" FontSize="14" FontWeight="Medium" />
+            </StackPanel>
+        </ScrollViewer>
+        
+
+        <Button x:Name="btnDiscard" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="3"
+                        Width="160" Height="30" Grid.Row="2" Style="{DynamicResource ButtonStyleDiscard}" Click="btnDiscard_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </Button.Resources>
+
+            <TextBlock Text="Отклонить" FontSize="14" FontWeight="Medium"/>
+        </Button>
+
+        <Button x:Name="btnAccept" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="3"
+                        Width="160" Height="30" Grid.Row="1" Style="{DynamicResource ButtonStyleAccept}" Click="btnAccept_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </Button.Resources>
+
+            <TextBlock Text="Подтвердить" FontSize="14" FontWeight="Medium"/>
+        </Button>
+    </Grid>
+</Window>

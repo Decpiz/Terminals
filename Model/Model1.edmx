@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище HranitelPRO_DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Celi">
+          <Key>
+            <PropertyRef Name="ID_Celi" />
+          </Key>
+          <Property Name="ID_Celi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CherniySpisok">
+          <Key>
+            <PropertyRef Name="ID_CS" />
+          </Key>
+          <Property Name="ID_CS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seria_pas" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nomer_pas" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Nomer_telefona" Type="nvarchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolzhnosti">
+          <Key>
+            <PropertyRef Name="ID_Dolzhnosti" />
+          </Key>
+          <Property Name="ID_Dolzhnosti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GrupZajavki">
+          <Key>
+            <PropertyRef Name="ID_Zajavki" />
+            <PropertyRef Name="ID_Posetitelia" />
+          </Key>
+          <Property Name="ID_Zajavki" Type="int" Nullable="false" />
+          <Property Name="ID_Posetitelia" Type="int" Nullable="false" />
+          <Property Name="A1" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Organizacii">
+          <Key>
+            <PropertyRef Name="ID_Organizacii" />
+          </Key>
+          <Property Name="ID_Organizacii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="INN" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="GenDir_FIO" Type="nvarchar" MaxLength="90" Nullable="false" />
+          <Property Name="OGRN" Type="nvarchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pasport">
+          <Key>
+            <PropertyRef Name="ID_Pasporta" />
+          </Key>
+          <Property Name="ID_Pasporta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seria" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nomer" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Data_vidachi" Type="date" Nullable="false" />
+          <Property Name="Kod_podrazdelenia" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Podrazdelenia">
+          <Key>
+            <PropertyRef Name="ID_Podrazdelenia" />
+          </Key>
+          <Property Name="ID_Podrazdelenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie_goroda" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nazvanie_ylici" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nomer_stroenia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Polzovateli">
+          <Key>
+            <PropertyRef Name="ID_Polzovatelia" />
+          </Key>
+          <Property Name="ID_Polzovatelia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Parol" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Organizacii" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Posetiteli">
+          <Key>
+            <PropertyRef Name="ID_Psetitelia" />
+          </Key>
+          <Property Name="ID_Psetitelia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seria_pas" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nomer_pas" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Nomer_telefona" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="35" />
+          <Property Name="Nazvanie_organizacii" Type="nvarchar" MaxLength="50" />
+          <Property Name="Data_rozhdenia" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnika" />
+          </Key>
+          <Property Name="ID_Sotrudnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Dolzhnosti" Type="int" Nullable="false" />
+          <Property Name="ID_Podrazdelenia" Type="int" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Seria_pas" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nomer_pas" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Kod_avtorizacii" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statusi">
+          <Key>
+            <PropertyRef Name="ID_Statusa" />
+          </Key>
+          <Property Name="ID_Statusa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Zajavki">
+          <Key>
+            <PropertyRef Name="ID_Zajavki" />
+          </Key>
+          <Property Name="ID_Zajavki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nomer_zajavki" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="ID_Polzovatelia" Type="int" Nullable="false" />
+          <Property Name="ID_Podrazdelenia" Type="int" Nullable="false" />
+          <Property Name="Data_poseshenia" Type="date" Nullable="false" />
+          <Property Name="Data_oformlenia" Type="date" />
+          <Property Name="ID_Celi" Type="int" Nullable="false" />
+          <Property Name="ID_Statusa" Type="int" Nullable="false" />
+          <Property Name="Soobshenie" Type="nvarchar" MaxLength="90" />
+        </EntityType>
+        <Association Name="FK_GrupZajavki_Posetiteli">
+          <End Role="Posetiteli" Type="Self.Posetiteli" Multiplicity="1" />
+          <End Role="GrupZajavki" Type="Self.GrupZajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posetiteli">
+              <PropertyRef Name="ID_Psetitelia" />
+            </Principal>
+            <Dependent Role="GrupZajavki">
+              <PropertyRef Name="ID_Posetitelia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupZajavki_Zajavki1">
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="1" />
+          <End Role="GrupZajavki" Type="Self.GrupZajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zajavki">
+              <PropertyRef Name="ID_Zajavki" />
+            </Principal>
+            <Dependent Role="GrupZajavki">
+              <PropertyRef Name="ID_Zajavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Organizacii">
+          <End Role="Organizacii" Type="Self.Organizacii" Multiplicity="0..1" />
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizacii">
+              <PropertyRef Name="ID_Organizacii" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="ID_Organizacii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Dolzhnosti">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="ID_Dolzhnosti" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Dolzhnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Podrazdelenia">
+          <End Role="Podrazdelenia" Type="Self.Podrazdelenia" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenia">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Celi">
+          <End Role="Celi" Type="Self.Celi" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Celi">
+              <PropertyRef Name="ID_Celi" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Celi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Podrazdelenia">
+          <End Role="Podrazdelenia" Type="Self.Podrazdelenia" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenia">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Polzovateli">
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovateli">
+              <PropertyRef Name="ID_Polzovatelia" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Polzovatelia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Statusi">
+          <End Role="Statusi" Type="Self.Statusi" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statusi">
+              <PropertyRef Name="ID_Statusa" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Statusa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HranitelPRO_DBModelContainer">
+          <EntitySet Name="Celi" EntityType="Self.Celi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CherniySpisok" EntityType="Self.CherniySpisok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolzhnosti" EntityType="Self.Dolzhnosti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupZajavki" EntityType="Self.GrupZajavki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizacii" EntityType="Self.Organizacii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pasport" EntityType="Self.Pasport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podrazdelenia" EntityType="Self.Podrazdelenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polzovateli" EntityType="Self.Polzovateli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posetiteli" EntityType="Self.Posetiteli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statusi" EntityType="Self.Statusi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zajavki" EntityType="Self.Zajavki" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GrupZajavki_Posetiteli" Association="Self.FK_GrupZajavki_Posetiteli">
+            <End Role="Posetiteli" EntitySet="Posetiteli" />
+            <End Role="GrupZajavki" EntitySet="GrupZajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupZajavki_Zajavki1" Association="Self.FK_GrupZajavki_Zajavki1">
+            <End Role="Zajavki" EntitySet="Zajavki" />
+            <End Role="GrupZajavki" EntitySet="GrupZajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Organizacii" Association="Self.FK_Polzovateli_Organizacii">
+            <End Role="Organizacii" EntitySet="Organizacii" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Dolzhnosti" Association="Self.FK_Sotrudniki_Dolzhnosti">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnosti" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Podrazdelenia" Association="Self.FK_Sotrudniki_Podrazdelenia">
+            <End Role="Podrazdelenia" EntitySet="Podrazdelenia" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Celi" Association="Self.FK_Zajavki_Celi">
+            <End Role="Celi" EntitySet="Celi" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Podrazdelenia" Association="Self.FK_Zajavki_Podrazdelenia">
+            <End Role="Podrazdelenia" EntitySet="Podrazdelenia" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Polzovateli" Association="Self.FK_Zajavki_Polzovateli">
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Statusi" Association="Self.FK_Zajavki_Statusi">
+            <End Role="Statusi" EntitySet="Statusi" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HranitelPRO_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Celi">
+          <Key>
+            <PropertyRef Name="ID_Celi" />
+          </Key>
+          <Property Name="ID_Celi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tekst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zajavki" Relationship="Self.FK_Zajavki_Celi" FromRole="Celi" ToRole="Zajavki" />
+        </EntityType>
+        <EntityType Name="CherniySpisok">
+          <Key>
+            <PropertyRef Name="ID_CS" />
+          </Key>
+          <Property Name="ID_CS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seria_pas" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nomer_pas" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imya" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nomer_telefona" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolzhnosti">
+          <Key>
+            <PropertyRef Name="ID_Dolzhnosti" />
+          </Key>
+          <Property Name="ID_Dolzhnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_Dolzhnosti" FromRole="Dolzhnosti" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="GrupZajavki">
+          <Key>
+            <PropertyRef Name="ID_Zajavki" />
+            <PropertyRef Name="ID_Posetitelia" />
+          </Key>
+          <Property Name="ID_Zajavki" Type="Int32" Nullable="false" />
+          <Property Name="ID_Posetitelia" Type="Int32" Nullable="false" />
+          <Property Name="A1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Posetiteli" Relationship="Self.FK_GrupZajavki_Posetiteli" FromRole="GrupZajavki" ToRole="Posetiteli" />
+          <NavigationProperty Name="Zajavki" Relationship="Self.FK_GrupZajavki_Zajavki1" FromRole="GrupZajavki" ToRole="Zajavki" />
+        </EntityType>
+        <EntityType Name="Organizacii">
+          <Key>
+            <PropertyRef Name="ID_Organizacii" />
+          </Key>
+          <Property Name="ID_Organizacii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenDir_FIO" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OGRN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Polzovateli" Relationship="Self.FK_Polzovateli_Organizacii" FromRole="Organizacii" ToRole="Polzovateli" />
+        </EntityType>
+        <EntityType Name="Pasport">
+          <Key>
+            <PropertyRef Name="ID_Pasporta" />
+          </Key>
+          <Property Name="ID_Pasporta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seria" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nomer" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_vidachi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kod_podrazdelenia" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Podrazdelenia">
+          <Key>
+            <PropertyRef Name="ID_Podrazdelenia" />
+          </Key>
+          <Property Name="ID_Podrazdelenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie_goroda" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazvanie_ylici" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nomer_stroenia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_Podrazdelenia" FromRole="Podrazdelenia" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Zajavki" Relationship="Self.FK_Zajavki_Podrazdelenia" FromRole="Podrazdelenia" ToRole="Zajavki" />
+        </EntityType>
+        <EntityType Name="Polzovateli">
+          <Key>
+            <PropertyRef Name="ID_Polzovatelia" />
+          </Key>
+          <Property Name="ID_Polzovatelia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imya" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parol" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Organizacii" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Organizacii" Relationship="Self.FK_Polzovateli_Organizacii" FromRole="Polzovateli" ToRole="Organizacii" />
+          <NavigationProperty Name="Zajavki" Relationship="Self.FK_Zajavki_Polzovateli" FromRole="Polzovateli" ToRole="Zajavki" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Posetiteli">
+          <Key>
+            <PropertyRef Name="ID_Psetitelia" />
+          </Key>
+          <Property Name="ID_Psetitelia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seria_pas" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nomer_pas" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imya" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nomer_telefona" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="Nazvanie_organizacii" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data_rozhdenia" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="GrupZajavki" Relationship="Self.FK_GrupZajavki_Posetiteli" FromRole="Posetiteli" ToRole="GrupZajavki" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnika" />
+          </Key>
+          <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Dolzhnosti" Type="Int32" Nullable="false" />
+          <Property Name="ID_Podrazdelenia" Type="Int32" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imya" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Seria_pas" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nomer_pas" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kod_avtorizacii" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Dolzhnosti" Relationship="Self.FK_Sotrudniki_Dolzhnosti" FromRole="Sotrudniki" ToRole="Dolzhnosti" />
+          <NavigationProperty Name="Podrazdelenia" Relationship="Self.FK_Sotrudniki_Podrazdelenia" FromRole="Sotrudniki" ToRole="Podrazdelenia" />
+        </EntityType>
+        <EntityType Name="Statusi">
+          <Key>
+            <PropertyRef Name="ID_Statusa" />
+          </Key>
+          <Property Name="ID_Statusa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zajavki" Relationship="Self.FK_Zajavki_Statusi" FromRole="Statusi" ToRole="Zajavki" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Zajavki">
+          <Key>
+            <PropertyRef Name="ID_Zajavki" />
+          </Key>
+          <Property Name="ID_Zajavki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nomer_zajavki" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Polzovatelia" Type="Int32" Nullable="false" />
+          <Property Name="ID_Podrazdelenia" Type="Int32" Nullable="false" />
+          <Property Name="Data_poseshenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_oformlenia" Type="DateTime" Precision="0" />
+          <Property Name="ID_Celi" Type="Int32" Nullable="false" />
+          <Property Name="ID_Statusa" Type="Int32" Nullable="false" />
+          <Property Name="Soobshenie" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Celi" Relationship="Self.FK_Zajavki_Celi" FromRole="Zajavki" ToRole="Celi" />
+          <NavigationProperty Name="GrupZajavki" Relationship="Self.FK_GrupZajavki_Zajavki1" FromRole="Zajavki" ToRole="GrupZajavki" />
+          <NavigationProperty Name="Podrazdelenia" Relationship="Self.FK_Zajavki_Podrazdelenia" FromRole="Zajavki" ToRole="Podrazdelenia" />
+          <NavigationProperty Name="Polzovateli" Relationship="Self.FK_Zajavki_Polzovateli" FromRole="Zajavki" ToRole="Polzovateli" />
+          <NavigationProperty Name="Statusi" Relationship="Self.FK_Zajavki_Statusi" FromRole="Zajavki" ToRole="Statusi" />
+        </EntityType>
+        <Association Name="FK_Zajavki_Celi">
+          <End Role="Celi" Type="Self.Celi" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Celi">
+              <PropertyRef Name="ID_Celi" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Celi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Dolzhnosti">
+          <End Role="Dolzhnosti" Type="Self.Dolzhnosti" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnosti">
+              <PropertyRef Name="ID_Dolzhnosti" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Dolzhnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupZajavki_Posetiteli">
+          <End Role="Posetiteli" Type="Self.Posetiteli" Multiplicity="1" />
+          <End Role="GrupZajavki" Type="Self.GrupZajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posetiteli">
+              <PropertyRef Name="ID_Psetitelia" />
+            </Principal>
+            <Dependent Role="GrupZajavki">
+              <PropertyRef Name="ID_Posetitelia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupZajavki_Zajavki1">
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="1" />
+          <End Role="GrupZajavki" Type="Self.GrupZajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zajavki">
+              <PropertyRef Name="ID_Zajavki" />
+            </Principal>
+            <Dependent Role="GrupZajavki">
+              <PropertyRef Name="ID_Zajavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Organizacii">
+          <End Role="Organizacii" Type="Self.Organizacii" Multiplicity="0..1" />
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizacii">
+              <PropertyRef Name="ID_Organizacii" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="ID_Organizacii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Podrazdelenia">
+          <End Role="Podrazdelenia" Type="Self.Podrazdelenia" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenia">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Podrazdelenia">
+          <End Role="Podrazdelenia" Type="Self.Podrazdelenia" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenia">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Podrazdelenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Polzovateli">
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovateli">
+              <PropertyRef Name="ID_Polzovatelia" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Polzovatelia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zajavki_Statusi">
+          <End Role="Statusi" Type="Self.Statusi" Multiplicity="1" />
+          <End Role="Zajavki" Type="Self.Zajavki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statusi">
+              <PropertyRef Name="ID_Statusa" />
+            </Principal>
+            <Dependent Role="Zajavki">
+              <PropertyRef Name="ID_Statusa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HranitelPRO7" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Celi" EntityType="Self.Celi" />
+          <EntitySet Name="CherniySpisok" EntityType="Self.CherniySpisok" />
+          <EntitySet Name="Dolzhnosti" EntityType="Self.Dolzhnosti" />
+          <EntitySet Name="GrupZajavki" EntityType="Self.GrupZajavki" />
+          <EntitySet Name="Organizacii" EntityType="Self.Organizacii" />
+          <EntitySet Name="Pasport" EntityType="Self.Pasport" />
+          <EntitySet Name="Podrazdelenia" EntityType="Self.Podrazdelenia" />
+          <EntitySet Name="Polzovateli" EntityType="Self.Polzovateli" />
+          <EntitySet Name="Posetiteli" EntityType="Self.Posetiteli" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" />
+          <EntitySet Name="Statusi" EntityType="Self.Statusi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Zajavki" EntityType="Self.Zajavki" />
+          <AssociationSet Name="FK_Zajavki_Celi" Association="Self.FK_Zajavki_Celi">
+            <End Role="Celi" EntitySet="Celi" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Dolzhnosti" Association="Self.FK_Sotrudniki_Dolzhnosti">
+            <End Role="Dolzhnosti" EntitySet="Dolzhnosti" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupZajavki_Posetiteli" Association="Self.FK_GrupZajavki_Posetiteli">
+            <End Role="Posetiteli" EntitySet="Posetiteli" />
+            <End Role="GrupZajavki" EntitySet="GrupZajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupZajavki_Zajavki1" Association="Self.FK_GrupZajavki_Zajavki1">
+            <End Role="Zajavki" EntitySet="Zajavki" />
+            <End Role="GrupZajavki" EntitySet="GrupZajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Organizacii" Association="Self.FK_Polzovateli_Organizacii">
+            <End Role="Organizacii" EntitySet="Organizacii" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Podrazdelenia" Association="Self.FK_Sotrudniki_Podrazdelenia">
+            <End Role="Podrazdelenia" EntitySet="Podrazdelenia" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Podrazdelenia" Association="Self.FK_Zajavki_Podrazdelenia">
+            <End Role="Podrazdelenia" EntitySet="Podrazdelenia" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Polzovateli" Association="Self.FK_Zajavki_Polzovateli">
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zajavki_Statusi" Association="Self.FK_Zajavki_Statusi">
+            <End Role="Statusi" EntitySet="Statusi" />
+            <End Role="Zajavki" EntitySet="Zajavki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HranitelPRO_DBModelContainer" CdmEntityContainer="HranitelPRO7">
+          <EntitySetMapping Name="Celi">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Celi">
+              <MappingFragment StoreEntitySet="Celi">
+                <ScalarProperty Name="ID_Celi" ColumnName="ID_Celi" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CherniySpisok">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.CherniySpisok">
+              <MappingFragment StoreEntitySet="CherniySpisok">
+                <ScalarProperty Name="ID_CS" ColumnName="ID_CS" />
+                <ScalarProperty Name="Seria_pas" ColumnName="Seria_pas" />
+                <ScalarProperty Name="Nomer_pas" ColumnName="Nomer_pas" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Nomer_telefona" ColumnName="Nomer_telefona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolzhnosti">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Dolzhnosti">
+              <MappingFragment StoreEntitySet="Dolzhnosti">
+                <ScalarProperty Name="ID_Dolzhnosti" ColumnName="ID_Dolzhnosti" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupZajavki">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.GrupZajavki">
+              <MappingFragment StoreEntitySet="GrupZajavki">
+                <ScalarProperty Name="ID_Zajavki" ColumnName="ID_Zajavki" />
+                <ScalarProperty Name="ID_Posetitelia" ColumnName="ID_Posetitelia" />
+                <ScalarProperty Name="A1" ColumnName="A1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizacii">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Organizacii">
+              <MappingFragment StoreEntitySet="Organizacii">
+                <ScalarProperty Name="ID_Organizacii" ColumnName="ID_Organizacii" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="GenDir_FIO" ColumnName="GenDir_FIO" />
+                <ScalarProperty Name="OGRN" ColumnName="OGRN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pasport">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Pasport">
+              <MappingFragment StoreEntitySet="Pasport">
+                <ScalarProperty Name="ID_Pasporta" ColumnName="ID_Pasporta" />
+                <ScalarProperty Name="Seria" ColumnName="Seria" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Data_vidachi" ColumnName="Data_vidachi" />
+                <ScalarProperty Name="Kod_podrazdelenia" ColumnName="Kod_podrazdelenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podrazdelenia">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Podrazdelenia">
+              <MappingFragment StoreEntitySet="Podrazdelenia">
+                <ScalarProperty Name="ID_Podrazdelenia" ColumnName="ID_Podrazdelenia" />
+                <ScalarProperty Name="Nazvanie_goroda" ColumnName="Nazvanie_goroda" />
+                <ScalarProperty Name="Nazvanie_ylici" ColumnName="Nazvanie_ylici" />
+                <ScalarProperty Name="Nomer_stroenia" ColumnName="Nomer_stroenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polzovateli">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Polzovateli">
+              <MappingFragment StoreEntitySet="Polzovateli">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_Polzovatelia" ColumnName="ID_Polzovatelia" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Parol" ColumnName="Parol" />
+                <ScalarProperty Name="ID_Organizacii" ColumnName="ID_Organizacii" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posetiteli">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Posetiteli">
+              <MappingFragment StoreEntitySet="Posetiteli">
+                <ScalarProperty Name="ID_Psetitelia" ColumnName="ID_Psetitelia" />
+                <ScalarProperty Name="Seria_pas" ColumnName="Seria_pas" />
+                <ScalarProperty Name="Nomer_pas" ColumnName="Nomer_pas" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Nomer_telefona" ColumnName="Nomer_telefona" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nazvanie_organizacii" ColumnName="Nazvanie_organizacii" />
+                <ScalarProperty Name="Data_rozhdenia" ColumnName="Data_rozhdenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudniki">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+                <ScalarProperty Name="ID_Dolzhnosti" ColumnName="ID_Dolzhnosti" />
+                <ScalarProperty Name="ID_Podrazdelenia" ColumnName="ID_Podrazdelenia" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Seria_pas" ColumnName="Seria_pas" />
+                <ScalarProperty Name="Nomer_pas" ColumnName="Nomer_pas" />
+                <ScalarProperty Name="Kod_avtorizacii" ColumnName="Kod_avtorizacii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statusi">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Statusi">
+              <MappingFragment StoreEntitySet="Statusi">
+                <ScalarProperty Name="ID_Statusa" ColumnName="ID_Statusa" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zajavki">
+            <EntityTypeMapping TypeName="HranitelPRO_DBModel.Zajavki">
+              <MappingFragment StoreEntitySet="Zajavki">
+                <ScalarProperty Name="ID_Zajavki" ColumnName="ID_Zajavki" />
+                <ScalarProperty Name="Nomer_zajavki" ColumnName="Nomer_zajavki" />
+                <ScalarProperty Name="ID_Polzovatelia" ColumnName="ID_Polzovatelia" />
+                <ScalarProperty Name="ID_Podrazdelenia" ColumnName="ID_Podrazdelenia" />
+                <ScalarProperty Name="Data_poseshenia" ColumnName="Data_poseshenia" />
+                <ScalarProperty Name="Data_oformlenia" ColumnName="Data_oformlenia" />
+                <ScalarProperty Name="ID_Celi" ColumnName="ID_Celi" />
+                <ScalarProperty Name="ID_Statusa" ColumnName="ID_Statusa" />
+                <ScalarProperty Name="Soobshenie" ColumnName="Soobshenie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
